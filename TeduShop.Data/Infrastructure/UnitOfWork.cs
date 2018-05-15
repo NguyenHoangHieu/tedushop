@@ -1,5 +1,6 @@
 ﻿namespace TeduShop.Data.Infrastructure
 {
+    //nhiem vu UOW dung de dam bao tinh dung dan cua du lieu khi commit
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbFactory dbFactory;
