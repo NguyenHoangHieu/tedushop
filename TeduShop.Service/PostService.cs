@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace TeduShop.Service
 {
-    public interface IPostService // tuwj tao. roi` nos tu genagic ra
+    public interface IPostService //B1 tự tạo các hàm void từ sẽ tự generic các hàm ben dưới
     {
         void Add(Post post);
 
@@ -19,15 +19,16 @@ namespace TeduShop.Service
         IEnumerable<Post> GetAll();
 
         IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
+        IEnumerable<Post> GetAllByCategoryPaging(int categoryId,int page, int pageSize, out int totalRow);
 
         Post GetById(int id);
 
-        IEnumerable<Post> GetAllByTagPaging(int tag,int page, int pageSize, out int totalRow);
+        IEnumerable<Post> GetAllByTagPaging(string tag,int page, int pageSize, out int totalRow);
 
         void SaveChanges();
     }
 
-    public class PostService : IPostService // ke thua` va` tu sinh cac ham ben duoi
+    public class PostService : IPostService //B2 ke thua` va` tu sinh cac ham ben duoi
     {
          IPostRepository _postRepository;
          IUnitOfWork _unitOfWork;
@@ -53,9 +54,16 @@ namespace TeduShop.Service
             return _postRepository.GetAll(new string[] { "PostCategory" });
         }
 
-        public IEnumerable<Post> GetAllByTagPaging(int tag, int page, int pageSize, out int totalRow)
+        public IEnumerable<Post> GetAllByCategoryPaging(int categoryId,int page, int pageSize, out int totalRow)
         {
-            return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize,new string[] { "PostCategory" });
+        }
+
+        public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
+        {
+            //TODO: select all pót by tag - lam phan trang
+            //return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            return _postRepository.GetAllByTag(tag, page, pageSize, out totalRow);
         }
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
