@@ -39,6 +39,9 @@ namespace TeduShop.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
 
+        //dung de tạo log hệ thống
+        public DbSet<Error> Errors { get; set; }
+
         //b4 
         //tao hàm này để tạo entity framework
         //b5 vào tạo IDbFactory
