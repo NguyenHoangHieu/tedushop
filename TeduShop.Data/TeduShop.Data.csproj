@@ -39,6 +39,14 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -64,6 +72,18 @@
     <Compile Include="Migrations\201805231000411_AddErrorTable.cs" />
     <Compile Include="Migrations\201805231000411_AddErrorTable.Designer.cs">
       <DependentUpon>201805231000411_AddErrorTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805260934217_intergrate-aspnetidentity.cs" />
+    <Compile Include="Migrations\201805260934217_intergrate-aspnetidentity.Designer.cs">
+      <DependentUpon>201805260934217_intergrate-aspnetidentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805261038055_changkey.cs" />
+    <Compile Include="Migrations\201805261038055_changkey.Designer.cs">
+      <DependentUpon>201805261038055_changkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805280641483_InitialDB1.cs" />
+    <Compile Include="Migrations\201805280641483_InitialDB1.Designer.cs">
+      <DependentUpon>201805280641483_InitialDB1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +119,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805231000411_AddErrorTable.resx">
       <DependentUpon>201805231000411_AddErrorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805260934217_intergrate-aspnetidentity.resx">
+      <DependentUpon>201805260934217_intergrate-aspnetidentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805261038055_changkey.resx">
+      <DependentUpon>201805261038055_changkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805280641483_InitialDB1.resx">
+      <DependentUpon>201805280641483_InitialDB1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

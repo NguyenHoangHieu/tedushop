@@ -4,6 +4,10 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using TeduShop.Web.Mappings;
 
+using TeduShop.Model.Models;
+using System.Data.Entity;
+using TeduShop.Data;
+
 namespace TeduShop.Web
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -18,6 +22,8 @@ namespace TeduShop.Web
 
             //cấu hình cho autoMapper
             AutoMapperConfiguration.Configure();
+
+           // Database.SetInitializer<TeduShopDbContext>(new DropCreateDatabaseIfModelChanges<TeduShopDbContext>());
         }
     }
 }

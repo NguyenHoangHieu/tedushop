@@ -1,15 +1,18 @@
-﻿using System.Data.Entity; //ke thua DbContext
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity; //ke thua DbContext
 using TeduShop.Model.Models;
 
 namespace TeduShop.Data
 {
-    public class TeduShopDbContext : DbContext
+    //bai 15 thay gi ke thua tu DbContext ta ke thua IdentityDbContext<ApplicationUser> de su dung Identiy Framwork
+    //public class TeduShopDbContext : DbContext -- mac dinh
+    public class TeduShopDbContext : IdentityDbContext<ApplicationUser> //cai Microsoft.AspNet.Identity.EntityFramework 
     {
         //b1 tao 2 thu muc infastructure
         //b2
         //khi tao tedushopdbcontext thi add 1 chuoi ket noi vao App.config
         // <connectionStrings>
-         //   <clear/>
+        //   <clear/>
         //    <add name = "TeduShopConnection" connectionString="data source=.;initial catalog=TeduShop;user id=sa;password=456456; MultipleActiveResultSets=True" />
         //  </connectionStrings>
 
@@ -42,13 +45,28 @@ namespace TeduShop.Data
         //dung de tạo log hệ thống
         public DbSet<Error> Errors { get; set; }
 
+        //bai 15 - identity
+        public static TeduShopDbContext Create()
+        {
+            return new TeduShopDbContext();
+        }
+
         //b4 
         //tao hàm này để tạo entity framework
         //b5 vào tạo IDbFactory
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            // modelBuilder.Entity<IdentityUserRole>().HasKey(i =>  new { i.UserId, i.RoleId });//chỉ ra khóa chính
+            // modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);//chỉ ra khóa chính
+            // base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId }).ToTable("ApplicationUserRoles");
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId).ToTable("ApplicationUserLogins");
+            modelBuilder.Entity<IdentityRole>().ToTable("ApplicationRoles");
+            modelBuilder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("ApplicationUserClaims");
         }
+
+       
 
     }
 }
