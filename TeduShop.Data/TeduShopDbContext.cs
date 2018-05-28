@@ -56,8 +56,8 @@ namespace TeduShop.Data
         //b5 vào tạo IDbFactory
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<IdentityUserRole>().HasKey(i =>  new { i.UserId, i.RoleId });//chỉ ra khóa chính
-            // modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);//chỉ ra khóa chính
+             //modelBuilder.Entity<IdentityUserRole>().HasKey(i =>  new { i.UserId, i.RoleId });//chỉ ra khóa chính
+             //modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);//chỉ ra khóa chính
             // base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId }).ToTable("ApplicationUserRoles");
