@@ -167,10 +167,16 @@
                              with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-dashboard"></i><p>Dashboard<i class="right fa fa-angle-left"></i></p>
+                                <i class="nav-icon fa fa-dashboard"></i><p>Sản phẩm<i class="right fa fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a ui-sref="product_categories" class="nav-link"><i class="fa fa-circle-o nav-icon"></i><p>Danh mục sản phảm</p> </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a ui-sref="products" class="nav-link"><i class="fa fa-circle-o nav-icon"></i><p>Sản phẩm</p></a>
+                                </li>
+                                @*<li class="nav-item">
                                     <a ui-sref="products" class="nav-link"><i class="fa fa-circle-o nav-icon"></i><p>product list</p> </a>
                                 </li>
                                 <li class="nav-item">
@@ -178,7 +184,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a ui-sref="product_edit" class="nav-link"><i class="fa fa-circle-o nav-icon"></i><p>product edit</p></a>
-                                </li>
+                                </li>*@
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -194,21 +200,21 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-pie-chart"></i>
                                 <p>
-                                    Charts
+                                    danh muc san pham - productcategory
                                     <i class="right fa fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../charts/chartjs.html" class="nav-link">
+                                    <a ui-sref="product_categories" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>ChartJS</p>
+                                        <p>productcategory </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../charts/flot.html" class="nav-link">
+                                    <a ui-sref="products" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Flot</p>
+                                        <p>product</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -497,11 +503,16 @@
     <!-- khai báo cấu hình routers.ui -  theo thu tu nhu sau -->
     <script src="~/app/shared/modules/tedushop.common.js"></script>
     <script src="~/app/components/products/products.module.js"></script>
+    <script src="~/app/shared/services/apiService.js"></script>
     <script src="~/app/app.js"></script>
     <script src="~/app/components/home/homeController.js"></script>
     <script src="~/app/components/products/productListController.js"></script>
     <script src="~/app/components/products/productAddController.js"></script>
     <script src="~/app/components/products/productEditController.js"></script>
+
+    <!-- productCategory -->
+    <script src="~/app/components/product_categories/productCategory.model.js"></script>
+    <script src="~/app/components/product_categories/productCategoryController.js"></script>
 
 
 </body>
