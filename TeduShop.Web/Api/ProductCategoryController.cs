@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using TeduShop.Model.Models;
 using TeduShop.Service;
 using TeduShop.Web.Infrastructure.Core;
 using TeduShop.Web.Models;
@@ -26,17 +26,45 @@ namespace TeduShop.Web.Api
             this._productCategoryService = productCategoryService;
         }
 
+        //[Route("getall")]
+        //public HttpResponseMessage Get(HttpRequestMessage request)
+        //{
+        //    return CreateHttpResponse(request, () =>
+        //    {
+        //        var listProductCategory = _productCategoryService.GetAll();
+
+        //        //edit cho - AutoMapper
+        //        var listProductCategoryVm = Mapper.Map<List<ProductCategoryViewModel>>(listProductCategory);
+
+        //        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProductCategoryVm);
+
+        //        return response;
+        //    });
+        //}
+
+        //ap dung cho phan trang bai 25
         [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
             {
-                var listProductCategory = _productCategoryService.GetAll();
+                int totalRow = 0;
+                var model = _productCategoryService.GetAll();
+
+                totalRow = model.Count();
+                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
 
                 //edit cho - AutoMapper
-                var listProductCategoryVm = Mapper.Map<List<ProductCategoryViewModel>>(listProductCategory);
+                var responseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(query);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProductCategoryVm);
+                var paginationSet = new PaginationSet<ProductCategoryViewModel>()
+                {
+                    Items = responseData,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
 
                 return response;
             });
