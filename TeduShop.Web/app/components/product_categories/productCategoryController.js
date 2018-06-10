@@ -33,9 +33,9 @@
 
     app.controller('productCategoryListController', productCategoryListController);
 
-    productCategoryListController.$inject = ['$scope', 'apiService'];
+    productCategoryListController.$inject = ['$scope', 'apiService', 'notificationService'];
 
-    function productCategoryListController($scope, apiService) {
+    function productCategoryListController($scope, apiService, notificationService) {
 
         $scope.productCategories = [];
 
@@ -63,6 +63,13 @@
             }//het
 
             apiService.get('/api/productcategory/getall', config, function (result) {
+
+                if (result.data.TotalCount == 0) {
+                    notificationService.displayWarning('Không có bản nghi nào');
+                } else {
+                    notificationService.displaySuccess('Đã tìm thấy thông tin bản nghi');
+                }
+
                 $scope.productCategories = result.data.Items;
 
                 //phan trang

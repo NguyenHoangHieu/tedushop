@@ -13,6 +13,7 @@
     <!-- Theme style -->
     @*<link rel="stylesheet" href="../../dist/css/adminlte.min.css">*@
     <link href="~/Assets/admin/libs/adminlte/adminlte.css" rel="stylesheet" />
+    <link href="~/Assets/admin/libs/toastr/toastr.css" rel="stylesheet" />
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -499,14 +500,18 @@
     <!-- nhúng angular -->
     <script src="~/Assets/admin/libs/angular/angular.js"></script>
     <script src="~/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- nhúng Toastr - notification -->
+    <script src="~/Assets/admin/libs/toastr/toastr.js"></script>
 
     <!-- khai báo cấu hình routers.ui -  theo thu tu nhu sau -->
     <script src="~/app/shared/modules/tedushop.common.js"></script>
     <script src="~/app/components/products/products.module.js"></script>
+
     <!-- statusFilters -->
     <script src="~/app/shared/filters/statusFilter.js"></script>
    
     <script src="~/app/shared/services/apiService.js"></script>
+    <script src="~/app/shared/services/notificationService.js"></script>
 
     <script src="~/app/shared/directives/pagerDirective.js"></script>
 
