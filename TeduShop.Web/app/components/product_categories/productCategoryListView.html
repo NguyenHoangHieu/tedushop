@@ -3,6 +3,16 @@
         <h3 class="card-title">Danh mục sản phảm</h3>
     </div>
     <!-- /.card-header -->
+    <div class="login-box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="keywork" placeholder="từ khóa" />
+                    <button class="btn btn-default" ng-click="serch()" type="button">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card-body">
         <table class="table table-bordered">
             <tr>
@@ -29,7 +39,9 @@
             </tr>
           
         </table>
+        <div class="row">Tổng số bản ghi: {{totalCount}}</div>
     </div>
+   
     <!-- /.card-body -->
     <div class="card-footer clearfix">
         <!--<ul class="pagination pagination-sm m-0 float-right">

@@ -15,6 +15,10 @@ namespace TeduShop.Service
         void Update(ProductCategory ProductCategory);
         ProductCategory Delete(int id);
         IEnumerable<ProductCategory> GetAll();
+
+        //bai 26 - tim kiem
+        IEnumerable<ProductCategory> GetAll(string keywork);
+
         IEnumerable<ProductCategory> GetAllByParentId(int parentId);
         ProductCategory GetById(int id);
 
@@ -48,6 +52,14 @@ namespace TeduShop.Service
         public IEnumerable<ProductCategory> GetAll()
         {
             return _ProductCategoryRepository.GetAll();
+        }
+
+        public IEnumerable<ProductCategory> GetAll(string keywork)
+        {
+            if (!string.IsNullOrEmpty(keywork))
+                return _ProductCategoryRepository.GetMulti(m => m.Name.Contains(keywork) || m.Description.Contains(keywork));
+            else
+                return _ProductCategoryRepository.GetAll();
         }
 
         public IEnumerable<ProductCategory> GetAllByParentId(int parentId)

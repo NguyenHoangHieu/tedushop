@@ -44,14 +44,21 @@
         $scope.pageCounts = 0;//het
         
         $scope.getProductCategories = getProductCategories;
+        //bai 26 - tim kiem
+        $scope.keywork = '';
+        $scope.serch = serch;
+        function serch() {
+            getProductCategories();
+        }
 
         function getProductCategories(page) {
             page = page || 0;
             //phan trang
             var config = {
                 params: {
+                    keywork: $scope.keywork,
                     page: page,
-                    pageSize: 2 // dung de chinh sua phan trang
+                    pageSize: 6 // dung de chinh sua phan trang
                 }
             }//het
 
